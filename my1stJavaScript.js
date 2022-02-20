@@ -222,7 +222,7 @@ do {
 console.log("do while Loop array", myArray1);
 
 // Math.random() - returns nimber between 0 and 1
-console.log("Math.random():" ,Math.random())
+console.log("Math.random():", Math.random())
 
 // random between 0 and 20
 // Math.floor() - rounds up the number no decimals
@@ -242,5 +242,121 @@ function convertToInteger(str) {
     return parseInt(str, 2);
 }
 console.log("convertToInteger: ", convertToInteger("10011"));
+
+// Use the conditional (Ternary) Operator
+// condition ? statement -if-true : statement -if-false;
+
+function checkEqual(a, b) {
+    return a === b ? true : false;
+}
+checkEqual(1, 2);
+
+// Use the nested conditional (Ternary) Operator 
+function checkSign(num) {
+    return num > 0 ? "positive" : num < 0 ? "negative" : "zero"
+}
+console.log("checkSign: ", checkSign(10));
+// var can be redeclared, let can not
+"use strict"; // put on top to catch var dec vithout var let or const 
+var catName = "Bou";
+var catName = "Mou";
+catName = "Mjou";
+
+let dogName = "Wow";
+//let dogName = "HWow"; // wil give error
+dogName = "HWOW";
+// VAR - (globaly or localy in the f-tion) and 
+// LET (limited in the block) Scopes
+function checkScope() {
+    "use strict";
+    var i = "function scope";
+    if (true) {
+        let i = "Block scope";
+        console.log("Block scope i is: ", i);
+    }
+    console.log("Function scope i is: ", i);
+    return i;
+}
+checkScope();
+// CONST - use all cap in name
+const SENTENCE = "free code camp" + " is cool!";
+//sentence += " Yey!";  // can not be modified!!!
+console.log(SENTENCE);
+
+// Update const Array
+const s = [5, 7, 6];
+function editInPlace() {
+    "use strict";
+
+    //s = [1, 2, 3];
+
+    s[0] = 1;
+    s[1] = 1;
+    s[2] = 1;
+    console.log("Array is updated!!! : ", s);
+}
+editInPlace();
+// Prevent Object Mutation
+function freezeObj() {
+    "use strict";
+    const MATH_CONSTANTS = {
+        PI: 3.14
+    };
+    Object.freeze(MATH_CONSTANTS)//To freeze the object!!!
+    try {
+        MATH_CONSTANTS.PI = 99;
+    } catch (ex) {
+        console.log(ex)
+    }
+    return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+
+console.log(PI);
+// Use Arrow Functions to Write concise Anonymous Functions
+var magic = function() { // Anonymous f-tion
+    return new Date();
+};
+console.log(magic)
+// Arrow f-tion
+var magic = () => new Date();
+// Arrow f-tion with Parameters
+var myConcat = (arr1, arr2) => arr1.concat(arr2);
+
+console.log("myConcat: ", myConcat([1, 2], [3, 4, 5]));
+
+// Write Higer Order Arrow Functions
+// like map, filter and reduce
+
+// rest operator ...
+const sum = (function() {
+    return function sum(...args) {
+        return args.reduce((a, b) => a + b, 0);
+    };
+})();
+console.log("rest operator ... ", sum(1,2,3,4,5));
+
+// Spread operator ...arr
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR'];
+let arr2;
+(function() {
+    //arr2 = arr1; // change this line
+    arr2 = [...arr1]; // change this line
+    arr1[0] = 'potatoe'
+})();
+console.log(arr2);
+
+
+
+
+
+
+
+// const prompt = require('prompt-sync')();
+
+// var fName = prompt("Enter your first name : ");
+// var lName = prompt("Enter your last name : ");
+
+// console.log("Hi", fName + " " + lName + "!")
 
 
